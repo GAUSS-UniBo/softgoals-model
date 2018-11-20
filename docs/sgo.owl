@@ -1,0 +1,503 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/fpoggi/sgo/"
+     xml:base="http://purl.org/fpoggi/sgo/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:collections="http://swan.mindinformatics.org/ontologies/1.2/collections/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owlapi="http://www.semanticweb.org/owlapi#">
+    <owl:Ontology rdf:about="http://purl.org/fpoggi/sgo">
+        <owl:versionIRI rdf:resource="http://purl.org/fpoggi/sgo/2018-11-16"/>
+        <dc:description xml:lang="en">SGO, the SoftGoals Ontology (SGO) allows ...</dc:description>
+        <owl:versionInfo xml:lang="en">1.0</owl:versionInfo>
+        <dc:rights xml:lang="en">This work is distributed under a Creative Commons Attribution 4.0 International license (https://creativecommons.org/licenses/by/4.0/legalcode).</dc:rights>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Francesco Poggi</dc:creator>
+        <dc:contributor rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Andrea Giovanni Nuzzolese</dc:contributor>
+        <dc:title xml:lang="en">SGO, the SoftGoals Ontology</dc:title>
+        <dc:date>2018-11-16</dc:date>
+        <rdfs:comment xml:lang="en">The SoftGoals Ontology (SGO) is an ontology that permits ...
+
+**URL:** http://purl.org/fpoggi/sgo
+
+**Creators**: [Francesco Poggi](http://orcid.org/0000-0001-6577-5606)
+
+**Collaborators**: [Andrea Giovanni Nuzzolese](https://orcid.org/0000-0003-2928-9496)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** https://www.unibo.it/sitoweb/francesco.poggi5/en
+
+**Cite as:** TODO</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/rights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://www.semanticweb.org/owlapi#nodeID -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/owlapi#nodeID"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#versionInfo -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/andRefinement -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/andRefinement">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/fpoggi/sgo/refinement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/basedOnMetric -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/basedOnMetric">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Influence"/>
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Weight"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Metric"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/concerns -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/concerns">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Weight"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/MotivationElement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/definedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/definedBy">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Profile"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/definedOnValueType -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/definedOnValueType">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/ScalarMetric"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ValueType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/defines -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/defines">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Profile"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Influence"/>
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Weight"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasContentValue -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasContentValue">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasMaxValue -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasMaxValue">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/ScalarMetric"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasMaxValueItem -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasMaxValueItem">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/OrdinalMetric"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasMember -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasMember">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/NominalMetric"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasMinValue -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasMinValue">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/ScalarMetric"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasMinValueItem -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasMinValueItem">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/OrdinalMetric"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasNext -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasNext">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasObject -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasObject">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Influence"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/MotivationElement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasPrev -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasPrev">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ValueItem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasState -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasState">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Profile"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ProfileState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasSubject -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasSubject">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Influence"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Task"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasValue -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasValue">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Influence"/>
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Weight"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/hasValueType -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/hasValueType">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+        <rdfs:range rdf:resource="http://purl.org/fpoggi/sgo/ValueType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/orRefinement -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/orRefinement">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/fpoggi/sgo/refinement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/refinement -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/fpoggi/sgo/refinement">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Goal"/>
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Task"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Goal"/>
+                    <rdf:Description rdf:about="http://purl.org/fpoggi/sgo/Task"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/fpoggi/sgo/value">
+        <rdfs:domain rdf:resource="http://purl.org/fpoggi/sgo/Value"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Actor -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Actor"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Goal -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Goal">
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/MotivationElement"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/RefinableElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Influence -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Influence"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Metric -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Metric"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/MotivationElement -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/MotivationElement"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/NominalMetric -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/NominalMetric">
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/Metric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/OrdinalMetric -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/OrdinalMetric">
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/Metric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Profile -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Profile"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/ProfileState -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/ProfileState"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Quality -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Quality">
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/MotivationElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/RefinableElement -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/RefinableElement"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/ScalarMetric -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/ScalarMetric">
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/Metric"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Task -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Task">
+        <rdfs:subClassOf rdf:resource="http://purl.org/fpoggi/sgo/RefinableElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Value -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Value"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/ValueItem -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/ValueItem"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/ValueType -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/ValueType"/>
+    
+
+
+    <!-- http://purl.org/fpoggi/sgo/Weight -->
+
+    <owl:Class rdf:about="http://purl.org/fpoggi/sgo/Weight"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

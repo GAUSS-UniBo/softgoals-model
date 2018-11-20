@@ -1,0 +1,322 @@
+@prefix : <http://purl.org/fpoggi/sgo/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix owlapi: <http://www.semanticweb.org/owlapi#> .
+@prefix collections: <http://swan.mindinformatics.org/ontologies/1.2/collections/> .
+@base <http://purl.org/fpoggi/sgo> .
+
+<http://purl.org/fpoggi/sgo> rdf:type owl:Ontology ;
+                              owl:versionIRI : ;
+                              dc:description "SGO, the SoftGoals Ontology (SGO) allows ..."@en ;
+                              owl:versionInfo "1.0"@en ;
+                              dc:rights "This work is distributed under a Creative Commons Attribution 4.0 International license (https://creativecommons.org/licenses/by/4.0/legalcode)."@en ;
+                              dc:creator "Francesco Poggi"^^xsd:string ;
+                              dc:contributor "Andrea Giovanni Nuzzolese"^^xsd:string ;
+                              dc:title "SGO, the SoftGoals Ontology"@en ;
+                              dc:date "2018-11-16" ;
+                              rdfs:comment """The SoftGoals Ontology (SGO) is an ontology that permits ...
+
+**URL:** http://purl.org/fpoggi/sgo
+
+**Creators**: [Francesco Poggi](http://orcid.org/0000-0001-6577-5606)
+
+**Collaborators**: [Andrea Giovanni Nuzzolese](https://orcid.org/0000-0003-2928-9496)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** https://www.unibo.it/sitoweb/francesco.poggi5/en
+
+**Cite as:** TODO"""@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/owlapi#nodeID
+owlapi:nodeID rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#versionInfo
+owl:versionInfo rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/fpoggi/sgo/andRefinement
+:andRefinement rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :refinement .
+
+
+###  http://purl.org/fpoggi/sgo/basedOnMetric
+:basedOnMetric rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( :Influence
+                                           :Weight
+                                         )
+                           ] ;
+               rdfs:range :Metric .
+
+
+###  http://purl.org/fpoggi/sgo/concerns
+:concerns rdf:type owl:ObjectProperty ;
+          rdfs:domain :Weight ;
+          rdfs:range :MotivationElement .
+
+
+###  http://purl.org/fpoggi/sgo/definedBy
+:definedBy rdf:type owl:ObjectProperty ;
+           rdfs:domain :Profile ;
+           rdfs:range :Actor .
+
+
+###  http://purl.org/fpoggi/sgo/definedOnValueType
+:definedOnValueType rdf:type owl:ObjectProperty ;
+                    rdfs:domain :ScalarMetric ;
+                    rdfs:range :ValueType .
+
+
+###  http://purl.org/fpoggi/sgo/defines
+:defines rdf:type owl:ObjectProperty ;
+         rdfs:domain :Profile ;
+         rdfs:range [ rdf:type owl:Class ;
+                      owl:unionOf ( :Influence
+                                    :Weight
+                                  )
+                    ] .
+
+
+###  http://purl.org/fpoggi/sgo/hasContentValue
+:hasContentValue rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ValueItem ;
+                 rdfs:range :Value .
+
+
+###  http://purl.org/fpoggi/sgo/hasMaxValue
+:hasMaxValue rdf:type owl:ObjectProperty ;
+             rdfs:domain :ScalarMetric ;
+             rdfs:range :Value .
+
+
+###  http://purl.org/fpoggi/sgo/hasMaxValueItem
+:hasMaxValueItem rdf:type owl:ObjectProperty ;
+                 rdfs:domain :OrdinalMetric ;
+                 rdfs:range :ValueItem .
+
+
+###  http://purl.org/fpoggi/sgo/hasMember
+:hasMember rdf:type owl:ObjectProperty ;
+           rdfs:domain :NominalMetric ;
+           rdfs:range :Value .
+
+
+###  http://purl.org/fpoggi/sgo/hasMinValue
+:hasMinValue rdf:type owl:ObjectProperty ;
+             rdfs:domain :ScalarMetric ;
+             rdfs:range :Value .
+
+
+###  http://purl.org/fpoggi/sgo/hasMinValueItem
+:hasMinValueItem rdf:type owl:ObjectProperty ;
+                 rdfs:domain :OrdinalMetric ;
+                 rdfs:range :ValueItem .
+
+
+###  http://purl.org/fpoggi/sgo/hasNext
+:hasNext rdf:type owl:ObjectProperty ;
+         rdfs:domain :ValueItem ;
+         rdfs:range :ValueItem .
+
+
+###  http://purl.org/fpoggi/sgo/hasObject
+:hasObject rdf:type owl:ObjectProperty ;
+           rdfs:domain :Influence ;
+           rdfs:range :MotivationElement .
+
+
+###  http://purl.org/fpoggi/sgo/hasPrev
+:hasPrev rdf:type owl:ObjectProperty ;
+         rdfs:domain :ValueItem ;
+         rdfs:range :ValueItem .
+
+
+###  http://purl.org/fpoggi/sgo/hasState
+:hasState rdf:type owl:ObjectProperty ;
+          rdfs:domain :Profile ;
+          rdfs:range :ProfileState .
+
+
+###  http://purl.org/fpoggi/sgo/hasSubject
+:hasSubject rdf:type owl:ObjectProperty ;
+            rdfs:domain :Influence ;
+            rdfs:range :Task .
+
+
+###  http://purl.org/fpoggi/sgo/hasValue
+:hasValue rdf:type owl:ObjectProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :Influence
+                                      :Weight
+                                    )
+                      ] ;
+          rdfs:range :Value .
+
+
+###  http://purl.org/fpoggi/sgo/hasValueType
+:hasValueType rdf:type owl:ObjectProperty ;
+              rdfs:domain :Value ;
+              rdfs:range :ValueType .
+
+
+###  http://purl.org/fpoggi/sgo/orRefinement
+:orRefinement rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :refinement .
+
+
+###  http://purl.org/fpoggi/sgo/refinement
+:refinement rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Goal
+                                        :Task
+                                      )
+                        ] ;
+            rdfs:range [ rdf:type owl:Class ;
+                         owl:unionOf ( :Goal
+                                       :Task
+                                     )
+                       ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/fpoggi/sgo/value
+:value rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Value ;
+       rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/fpoggi/sgo/Actor
+:Actor rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/Goal
+:Goal rdf:type owl:Class ;
+      rdfs:subClassOf :MotivationElement ,
+                      :RefinableElement .
+
+
+###  http://purl.org/fpoggi/sgo/Influence
+:Influence rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/Metric
+:Metric rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/MotivationElement
+:MotivationElement rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/NominalMetric
+:NominalMetric rdf:type owl:Class ;
+               rdfs:subClassOf :Metric .
+
+
+###  http://purl.org/fpoggi/sgo/OrdinalMetric
+:OrdinalMetric rdf:type owl:Class ;
+               rdfs:subClassOf :Metric .
+
+
+###  http://purl.org/fpoggi/sgo/Profile
+:Profile rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/ProfileState
+:ProfileState rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/Quality
+:Quality rdf:type owl:Class ;
+         rdfs:subClassOf :MotivationElement .
+
+
+###  http://purl.org/fpoggi/sgo/RefinableElement
+:RefinableElement rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/ScalarMetric
+:ScalarMetric rdf:type owl:Class ;
+              rdfs:subClassOf :Metric .
+
+
+###  http://purl.org/fpoggi/sgo/Task
+:Task rdf:type owl:Class ;
+      rdfs:subClassOf :RefinableElement .
+
+
+###  http://purl.org/fpoggi/sgo/Value
+:Value rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/ValueItem
+:ValueItem rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/ValueType
+:ValueType rdf:type owl:Class .
+
+
+###  http://purl.org/fpoggi/sgo/Weight
+:Weight rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
