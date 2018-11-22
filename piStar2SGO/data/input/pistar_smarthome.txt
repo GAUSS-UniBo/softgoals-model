@@ -1,0 +1,497 @@
+{
+  "actors": [
+    {
+      "id": "80e279ea-c878-41cc-bcbc-ed114e1d5250",
+      "text": "System",
+      "type": "istar.Agent",
+      "x": 1009,
+      "y": 61,
+      "nodes": [
+        {
+          "id": "8749de4d-8e50-4938-b6be-451b7f67e799",
+          "text": "Lightning system (self-)adapted",
+          "type": "istar.Goal",
+          "x": 1021,
+          "y": 233
+        },
+        {
+          "id": "4bb58b7f-b51d-4ad5-ac73-f4bce8d15905",
+          "text": "Reconfigure (MIN consumption)",
+          "type": "istar.Task",
+          "x": 1099,
+          "y": 318
+        },
+        {
+          "id": "7d31a48f-1714-456e-a359-8a661fb7da2a",
+          "text": "Low energy consumption",
+          "type": "istar.Quality",
+          "x": 1169,
+          "y": 471
+        },
+        {
+          "id": "3c2483f4-47e9-4021-9ca4-ceaefec86290",
+          "text": "Comfort",
+          "type": "istar.Quality",
+          "x": 1316,
+          "y": 472
+        },
+        {
+          "id": "473f076c-8649-4d90-98dc-aa8120b0d7b8",
+          "text": "Reconfigure (MAX consumption)",
+          "type": "istar.Task",
+          "x": 1327,
+          "y": 281
+        },
+        {
+          "id": "dea48b98-5fe2-4eeb-b412-3938c0b1a58a",
+          "text": "Reconfigure (MEDIUM consumption)",
+          "type": "istar.Task",
+          "x": 1212,
+          "y": 207
+        },
+        {
+          "id": "46d85ec9-754e-4b98-9133-780c386ec621",
+          "text": "System (self-)adapted",
+          "type": "istar.Goal",
+          "x": 1081,
+          "y": 100
+        },
+        {
+          "id": "c07a86da-f763-4fd4-b345-f6cf193fb037",
+          "text": "Temperature control (self-)adapted",
+          "type": "istar.Goal",
+          "x": 1217,
+          "y": 121
+        }
+      ]
+    },
+    {
+      "id": "05df0161-07c9-4371-8832-fe4f63cb96d1",
+      "text": "ReconfigurationEngine",
+      "type": "istar.Agent",
+      "x": 1537,
+      "y": 220,
+      "nodes": []
+    },
+    {
+      "id": "82b88d5c-08b4-4844-92b8-bbe4d26cc6ae",
+      "text": "User",
+      "type": "istar.Role",
+      "x": 437,
+      "y": 99,
+      "nodes": [
+        {
+          "id": "083c07f5-bbe3-4fc2-b6d3-bdfb10ef982e",
+          "text": "Comfort",
+          "type": "istar.Quality",
+          "x": 747,
+          "y": 477
+        },
+        {
+          "id": "ceda4154-c958-4bf2-bdba-f0aa7df10ec9",
+          "text": "Low energy consumption",
+          "type": "istar.Quality",
+          "x": 545,
+          "y": 480
+        },
+        {
+          "id": "ff80d185-1509-4135-89f5-bdd1ffacda34",
+          "text": "Lightning managed",
+          "type": "istar.Goal",
+          "x": 517,
+          "y": 196
+        },
+        {
+          "id": "24fd3abe-23eb-47c7-8758-d06a73715581",
+          "text": "Temperature managed",
+          "type": "istar.Goal",
+          "x": 717,
+          "y": 194
+        },
+        {
+          "id": "124f9d73-b370-4569-8df2-364a904eff51",
+          "text": "Manage light manually",
+          "type": "istar.Task",
+          "x": 437,
+          "y": 370
+        },
+        {
+          "id": "dc3ddb5c-43a4-4bdc-badb-7e005f48ff00",
+          "text": "Light automatically managed",
+          "type": "istar.Goal",
+          "x": 579,
+          "y": 369
+        },
+        {
+          "id": "34001edc-5eb1-4228-9604-415891c07001",
+          "text": "Manage temperature manually",
+          "type": "istar.Task",
+          "x": 641,
+          "y": 271
+        },
+        {
+          "id": "9e948b3e-6702-4bd9-b43d-8779bf94f0af",
+          "text": "Temperature automatically managed",
+          "type": "istar.Goal",
+          "x": 777,
+          "y": 268
+        },
+        {
+          "id": "38541348-3029-49f6-b839-87369100ba8f",
+          "text": "Smart home managed",
+          "type": "istar.Goal",
+          "x": 611,
+          "y": 122
+        }
+      ]
+    },
+    {
+      "id": "1b40e25b-5916-4312-b184-b6b661a929ab",
+      "text": "Student",
+      "type": "istar.Role",
+      "x": 68,
+      "y": 250,
+      "nodes": []
+    },
+    {
+      "id": "6aadc9af-21cc-4379-961f-8ac996abac91",
+      "text": "Administrative",
+      "type": "istar.Role",
+      "x": 119,
+      "y": 379,
+      "nodes": []
+    },
+    {
+      "id": "2ade6eca-16c1-40bd-bf16-e3d6bbcf2d13",
+      "text": "Professor",
+      "type": "istar.Role",
+      "x": 278,
+      "y": 437,
+      "nodes": []
+    },
+    {
+      "id": "530b0ad7-aa1c-441b-a9ec-5ec2e629092b",
+      "text": "Head",
+      "type": "istar.Role",
+      "x": 260,
+      "y": 612,
+      "nodes": []
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "28eed04e-3a91-4819-b426-718ac3835927",
+      "text": "Light automatically managed",
+      "type": "istar.Goal",
+      "x": 895,
+      "y": 371,
+      "source": "dc3ddb5c-43a4-4bdc-badb-7e005f48ff00",
+      "target": "8749de4d-8e50-4938-b6be-451b7f67e799"
+    },
+    {
+      "id": "3c4262ec-746a-4e66-be67-3fd89f508ae0",
+      "text": "Temperature automantically managed",
+      "type": "istar.Goal",
+      "x": 858,
+      "y": 49,
+      "source": "9e948b3e-6702-4bd9-b43d-8779bf94f0af",
+      "target": "c07a86da-f763-4fd4-b345-f6cf193fb037"
+    }
+  ],
+  "links": [
+    {
+      "id": "4cde96e2-940b-4758-89b7-0194c11064af",
+      "type": "istar.DependencyLink",
+      "source": "dc3ddb5c-43a4-4bdc-badb-7e005f48ff00",
+      "target": "28eed04e-3a91-4819-b426-718ac3835927"
+    },
+    {
+      "id": "1974084a-3fba-4430-bc73-bdbdf8e2c34b",
+      "type": "istar.DependencyLink",
+      "source": "28eed04e-3a91-4819-b426-718ac3835927",
+      "target": "8749de4d-8e50-4938-b6be-451b7f67e799"
+    },
+    {
+      "id": "2bc97179-5fda-4793-89cb-02e4a7f35aa4",
+      "type": "istar.IsALink",
+      "source": "1b40e25b-5916-4312-b184-b6b661a929ab",
+      "target": "82b88d5c-08b4-4844-92b8-bbe4d26cc6ae"
+    },
+    {
+      "id": "01b0f0bd-9418-45f3-935f-ba1573a47e8f",
+      "type": "istar.OrRefinementLink",
+      "source": "124f9d73-b370-4569-8df2-364a904eff51",
+      "target": "ff80d185-1509-4135-89f5-bdd1ffacda34"
+    },
+    {
+      "id": "2db1f69d-5cc3-4e51-9978-367800ad5f9a",
+      "type": "istar.ContributionLink",
+      "source": "4bb58b7f-b51d-4ad5-ac73-f4bce8d15905",
+      "target": "7d31a48f-1714-456e-a359-8a661fb7da2a",
+      "label": "make"
+    },
+    {
+      "id": "8ffdc73b-c2fd-468a-a493-ee893c5eef6e",
+      "type": "istar.ContributionLink",
+      "source": "4bb58b7f-b51d-4ad5-ac73-f4bce8d15905",
+      "target": "3c2483f4-47e9-4021-9ca4-ceaefec86290",
+      "label": "break"
+    },
+    {
+      "id": "083e9707-a963-445e-9b28-fe8bebe3436b",
+      "type": "istar.ContributionLink",
+      "source": "473f076c-8649-4d90-98dc-aa8120b0d7b8",
+      "target": "3c2483f4-47e9-4021-9ca4-ceaefec86290",
+      "label": "make"
+    },
+    {
+      "id": "260018c9-d8d2-47b3-babf-4aef67e79709",
+      "type": "istar.ContributionLink",
+      "source": "473f076c-8649-4d90-98dc-aa8120b0d7b8",
+      "target": "7d31a48f-1714-456e-a359-8a661fb7da2a",
+      "label": "break"
+    },
+    {
+      "id": "34a46fdf-4905-4cd3-9d02-99f2d4fe8840",
+      "type": "istar.ContributionLink",
+      "source": "dea48b98-5fe2-4eeb-b412-3938c0b1a58a",
+      "target": "3c2483f4-47e9-4021-9ca4-ceaefec86290",
+      "label": "help"
+    },
+    {
+      "id": "b9c580be-4c9b-41a3-97a1-a10d43dee88a",
+      "type": "istar.ContributionLink",
+      "source": "dea48b98-5fe2-4eeb-b412-3938c0b1a58a",
+      "target": "7d31a48f-1714-456e-a359-8a661fb7da2a",
+      "label": "help"
+    },
+    {
+      "id": "bbd15569-65cf-42c3-a981-25c898716940",
+      "type": "istar.IsALink",
+      "source": "530b0ad7-aa1c-441b-a9ec-5ec2e629092b",
+      "target": "2ade6eca-16c1-40bd-bf16-e3d6bbcf2d13"
+    },
+    {
+      "id": "f899049a-a72f-4268-bf93-f622f5262adf",
+      "type": "istar.IsALink",
+      "source": "2ade6eca-16c1-40bd-bf16-e3d6bbcf2d13",
+      "target": "82b88d5c-08b4-4844-92b8-bbe4d26cc6ae"
+    },
+    {
+      "id": "caab2e6c-772e-4f7d-9579-12a79bd3e503",
+      "type": "istar.IsALink",
+      "source": "6aadc9af-21cc-4379-961f-8ac996abac91",
+      "target": "82b88d5c-08b4-4844-92b8-bbe4d26cc6ae"
+    },
+    {
+      "id": "5277749e-0081-4757-9c9a-57d162e33eb5",
+      "type": "istar.OrRefinementLink",
+      "source": "dea48b98-5fe2-4eeb-b412-3938c0b1a58a",
+      "target": "8749de4d-8e50-4938-b6be-451b7f67e799"
+    },
+    {
+      "id": "56951289-7611-42de-8df1-92afa0c2cb44",
+      "type": "istar.OrRefinementLink",
+      "source": "473f076c-8649-4d90-98dc-aa8120b0d7b8",
+      "target": "8749de4d-8e50-4938-b6be-451b7f67e799"
+    },
+    {
+      "id": "51dd15db-3c69-4bc8-a3b7-d233f07bc4bd",
+      "type": "istar.OrRefinementLink",
+      "source": "4bb58b7f-b51d-4ad5-ac73-f4bce8d15905",
+      "target": "8749de4d-8e50-4938-b6be-451b7f67e799"
+    },
+    {
+      "id": "91c1fba3-c9e8-412e-943b-fc9a83aeb1ac",
+      "type": "istar.OrRefinementLink",
+      "source": "dc3ddb5c-43a4-4bdc-badb-7e005f48ff00",
+      "target": "ff80d185-1509-4135-89f5-bdd1ffacda34"
+    },
+    {
+      "id": "614c9e3c-0e73-4a5a-92a5-aea8b4224d94",
+      "type": "istar.QualificationLink",
+      "source": "ceda4154-c958-4bf2-bdba-f0aa7df10ec9",
+      "target": "dc3ddb5c-43a4-4bdc-badb-7e005f48ff00"
+    },
+    {
+      "id": "89a42262-0fff-4720-a587-d91db912dfcd",
+      "type": "istar.QualificationLink",
+      "source": "083c07f5-bbe3-4fc2-b6d3-bdfb10ef982e",
+      "target": "dc3ddb5c-43a4-4bdc-badb-7e005f48ff00"
+    },
+    {
+      "id": "d72c5786-36e1-412c-b036-780623896f2a",
+      "type": "istar.OrRefinementLink",
+      "source": "34001edc-5eb1-4228-9604-415891c07001",
+      "target": "24fd3abe-23eb-47c7-8758-d06a73715581"
+    },
+    {
+      "id": "57e506ee-e807-4b51-8fc4-54c972065c86",
+      "type": "istar.OrRefinementLink",
+      "source": "9e948b3e-6702-4bd9-b43d-8779bf94f0af",
+      "target": "24fd3abe-23eb-47c7-8758-d06a73715581"
+    },
+    {
+      "id": "11247a24-179c-4d0f-bb9b-fb234c470e0c",
+      "type": "istar.QualificationLink",
+      "source": "ceda4154-c958-4bf2-bdba-f0aa7df10ec9",
+      "target": "9e948b3e-6702-4bd9-b43d-8779bf94f0af"
+    },
+    {
+      "id": "d34beb3b-2f84-40ea-bcaa-75f470bdfd5f",
+      "type": "istar.QualificationLink",
+      "source": "083c07f5-bbe3-4fc2-b6d3-bdfb10ef982e",
+      "target": "9e948b3e-6702-4bd9-b43d-8779bf94f0af"
+    },
+    {
+      "id": "75799cc0-5e7a-4c39-8523-cbb89769d015",
+      "type": "istar.DependencyLink",
+      "source": "9e948b3e-6702-4bd9-b43d-8779bf94f0af",
+      "target": "3c4262ec-746a-4e66-be67-3fd89f508ae0"
+    },
+    {
+      "id": "ceeba174-3a44-4946-a479-c161ffa5ff50",
+      "type": "istar.DependencyLink",
+      "source": "3c4262ec-746a-4e66-be67-3fd89f508ae0",
+      "target": "c07a86da-f763-4fd4-b345-f6cf193fb037"
+    },
+    {
+      "id": "e3f55847-28b5-4af9-ac3f-ffffe58c0d57",
+      "type": "istar.AndRefinementLink",
+      "source": "ff80d185-1509-4135-89f5-bdd1ffacda34",
+      "target": "38541348-3029-49f6-b839-87369100ba8f"
+    },
+    {
+      "id": "9a39cdcd-8fcf-4d93-9eba-b85cadc6911b",
+      "type": "istar.AndRefinementLink",
+      "source": "24fd3abe-23eb-47c7-8758-d06a73715581",
+      "target": "38541348-3029-49f6-b839-87369100ba8f"
+    },
+    {
+      "id": "03ae332b-5d66-4ccb-8296-6c9f3a9e0272",
+      "type": "istar.OrRefinementLink",
+      "source": "4bb58b7f-b51d-4ad5-ac73-f4bce8d15905",
+      "target": "c07a86da-f763-4fd4-b345-f6cf193fb037"
+    },
+    {
+      "id": "9c9b608b-ca04-4799-997d-7161f54252d6",
+      "type": "istar.OrRefinementLink",
+      "source": "dea48b98-5fe2-4eeb-b412-3938c0b1a58a",
+      "target": "c07a86da-f763-4fd4-b345-f6cf193fb037"
+    },
+    {
+      "id": "d6d3372d-75d4-4a01-865e-af4ddc680cd2",
+      "type": "istar.OrRefinementLink",
+      "source": "473f076c-8649-4d90-98dc-aa8120b0d7b8",
+      "target": "c07a86da-f763-4fd4-b345-f6cf193fb037"
+    },
+    {
+      "id": "6d6f08bf-389a-42fe-b406-b66daf93f29d",
+      "type": "istar.AndRefinementLink",
+      "source": "8749de4d-8e50-4938-b6be-451b7f67e799",
+      "target": "46d85ec9-754e-4b98-9133-780c386ec621"
+    },
+    {
+      "id": "b3e0d409-d6ff-425f-ade7-ccf27e0eae22",
+      "type": "istar.AndRefinementLink",
+      "source": "c07a86da-f763-4fd4-b345-f6cf193fb037",
+      "target": "46d85ec9-754e-4b98-9133-780c386ec621"
+    }
+  ],
+  "display": {
+    "4cde96e2-940b-4758-89b7-0194c11064af": {
+      "vertices": [
+        {
+          "x": 785,
+          "y": 406
+        }
+      ]
+    },
+    "8ffdc73b-c2fd-468a-a493-ee893c5eef6e": {
+      "vertices": [
+        {
+          "x": 1159,
+          "y": 523
+        }
+      ]
+    },
+    "083e9707-a963-445e-9b28-fe8bebe3436b": {
+      "vertices": [
+        {
+          "x": 1417,
+          "y": 414
+        }
+      ]
+    },
+    "260018c9-d8d2-47b3-babf-4aef67e79709": {
+      "vertices": [
+        {
+          "x": 1355,
+          "y": 399
+        }
+      ]
+    },
+    "34a46fdf-4905-4cd3-9d02-99f2d4fe8840": {
+      "vertices": [
+        {
+          "x": 1313,
+          "y": 348
+        }
+      ]
+    },
+    "b9c580be-4c9b-41a3-97a1-a10d43dee88a": {
+      "vertices": [
+        {
+          "x": 1225,
+          "y": 307
+        }
+      ]
+    },
+    "ceeba174-3a44-4946-a479-c161ffa5ff50": {
+      "vertices": [
+        {
+          "x": 1090,
+          "y": 16
+        }
+      ]
+    },
+    "03ae332b-5d66-4ccb-8296-6c9f3a9e0272": {
+      "vertices": [
+        {
+          "x": 1175,
+          "y": 216
+        }
+      ]
+    },
+    "d6d3372d-75d4-4a01-865e-af4ddc680cd2": {
+      "vertices": [
+        {
+          "x": 1366,
+          "y": 201
+        }
+      ]
+    },
+    "05df0161-07c9-4371-8832-fe4f63cb96d1": {
+      "collapsed": true
+    },
+    "1b40e25b-5916-4312-b184-b6b661a929ab": {
+      "collapsed": true
+    },
+    "6aadc9af-21cc-4379-961f-8ac996abac91": {
+      "collapsed": true
+    },
+    "2ade6eca-16c1-40bd-bf16-e3d6bbcf2d13": {
+      "collapsed": true
+    },
+    "530b0ad7-aa1c-441b-a9ec-5ec2e629092b": {
+      "collapsed": true
+    }
+  },
+  "tool": "pistar.1.2.0",
+  "istar": "2.0",
+  "saveDate": "Thu, 22 Nov 2018 07:56:23 GMT",
+  "diagram": {
+    "width": 1786,
+    "height": 1300
+  }
+}

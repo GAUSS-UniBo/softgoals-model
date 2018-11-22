@@ -1,0 +1,145 @@
+@prefix asgo: <http://www.gauss.it/extensions/sgo/adaptive/> .
+@prefix gsh: <http://www.gauss.it/examples/smarthome/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sgo: <http://purl.org/gauss-unibo/sgo/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gsh:34001edc-5eb1-4228-9604-415891c07001 sgo:orRefinement gsh:24fd3abe-23eb-47c7-8758-d06a73715581;
+  a sgo:Task;
+  rdfs:label "Manage temperature manually" .
+
+gsh:dea48b98-5fe2-4eeb-b412-3938c0b1a58a a sgo:Task, asgo:ReconfigurationPolicy;
+  sgo:orRefinement gsh:8749de4d-8e50-4938-b6be-451b7f67e799, gsh:c07a86da-f763-4fd4-b345-f6cf193fb037;
+  rdfs:label "Reconfigure (MEDIUM consumption)" .
+
+gsh:473f076c-8649-4d90-98dc-aa8120b0d7b8 a sgo:Task, asgo:ReconfigurationPolicy;
+  sgo:orRefinement gsh:8749de4d-8e50-4938-b6be-451b7f67e799, gsh:c07a86da-f763-4fd4-b345-f6cf193fb037;
+  rdfs:label "Reconfigure (MAX consumption)" .
+
+gsh:8749de4d-8e50-4938-b6be-451b7f67e799 a sgo:Goal;
+  sgo:andRefinement gsh:46d85ec9-754e-4b98-9133-780c386ec621;
+  rdfs:label "Lightning system (self-)adapted" .
+
+gsh:ff80d185-1509-4135-89f5-bdd1ffacda34 a sgo:Goal;
+  sgo:andRefinement gsh:38541348-3029-49f6-b839-87369100ba8f;
+  rdfs:label "Lightning managed" .
+
+gsh:124f9d73-b370-4569-8df2-364a904eff51 a sgo:Task;
+  sgo:orRefinement gsh:ff80d185-1509-4135-89f5-bdd1ffacda34;
+  rdfs:label "Manage light manually" .
+
+gsh:istarMetric a sgo:OrdinalMetric;
+  sgo:hasMaxValueItem gsh:istarMetric_makeValueItem;
+  sgo:hasMinValueItem gsh:istarMetric_breakValueItem .
+
+gsh:istarMetric_makeValueItem a sgo:ValueItem;
+  sgo:hasContentValue gsh:istarMetric_makeValue;
+  sgo:hasNext gsh:istarMetric_helpValueItem .
+
+gsh:istarMetric_helpValueItem a sgo:ValueItem;
+  sgo:hasContentValue gsh:istarMetric_helpValue;
+  sgo:hasNext gsh:istarMetric_zeroValueItem .
+
+gsh:istarMetric_zeroValueItem a sgo:ValueItem;
+  sgo:hasContentValue gsh:istarMetric_zeroValue;
+  sgo:hasNext gsh:istarMetric_hurtValueItem .
+
+gsh:istarMetric_hurtValueItem a sgo:ValueItem;
+  sgo:hasContentValue gsh:istarMetric_hurtValue;
+  sgo:hasNext gsh:istarMetric_brekValueItem .
+
+gsh:istarMetric_breakValueItem a sgo:ValueItem;
+  sgo:hasContentValue gsh:istarMetric_breakValue .
+
+gsh:istarMetric_makeValue a sgo:Value;
+  sgo:value "2"^^xsd:int .
+
+gsh:istarMetric_helpValue a sgo:Value;
+  sgo:value "1"^^xsd:int .
+
+gsh:istarMetric_zeroValue a sgo:Value;
+  sgo:value "0"^^xsd:int .
+
+gsh:istarMetric_hurtValue a sgo:Value;
+  sgo:value "-1"^^xsd:int .
+
+gsh:istarMetric_breakValue a sgo:Value;
+  sgo:value "-2"^^xsd:int .
+
+asgo:ReconfigurationPolicy a owl:Class;
+  rdfs:subClassOf sgo:Task .
+
+gsh:3c2483f4-47e9-4021-9ca4-ceaefec86290 a sgo:Quality;
+  rdfs:label "Comfort" .
+
+gsh:34a46fdf-4905-4cd3-9d02-99f2d4fe8840 a sgo:Influence;
+  sgo:basedOnMetric gsh:istarMetric;
+  sgo:contributesTo gsh:3c2483f4-47e9-4021-9ca4-ceaefec86290;
+  sgo:hasSubject gsh:dea48b98-5fe2-4eeb-b412-3938c0b1a58a;
+  sgo:hasValue gsh:istarMetric_helpValue .
+
+gsh:4bb58b7f-b51d-4ad5-ac73-f4bce8d15905 a sgo:Task, asgo:ReconfigurationPolicy;
+  sgo:orRefinement gsh:8749de4d-8e50-4938-b6be-451b7f67e799, gsh:c07a86da-f763-4fd4-b345-f6cf193fb037;
+  rdfs:label "Reconfigure (MIN consumption)" .
+
+gsh:083e9707-a963-445e-9b28-fe8bebe3436b a sgo:Influence;
+  sgo:basedOnMetric gsh:istarMetric;
+  sgo:contributesTo gsh:3c2483f4-47e9-4021-9ca4-ceaefec86290;
+  sgo:hasSubject gsh:473f076c-8649-4d90-98dc-aa8120b0d7b8;
+  sgo:hasValue gsh:istarMetric_makeValue .
+
+gsh:dc3ddb5c-43a4-4bdc-badb-7e005f48ff00 a sgo:Goal;
+  sgo:orRefinement gsh:ff80d185-1509-4135-89f5-bdd1ffacda34;
+  rdfs:label "Light automatically managed" .
+
+gsh:8ffdc73b-c2fd-468a-a493-ee893c5eef6e a sgo:Influence;
+  sgo:basedOnMetric gsh:istarMetric;
+  sgo:contributesTo gsh:3c2483f4-47e9-4021-9ca4-ceaefec86290;
+  sgo:hasSubject gsh:4bb58b7f-b51d-4ad5-ac73-f4bce8d15905;
+  sgo:hasValue gsh:istarMetric_breakValue .
+
+gsh:9e948b3e-6702-4bd9-b43d-8779bf94f0af a sgo:Goal;
+  sgo:orRefinement gsh:24fd3abe-23eb-47c7-8758-d06a73715581;
+  rdfs:label "Temperature automatically managed" .
+
+gsh:7d31a48f-1714-456e-a359-8a661fb7da2a a sgo:Quality;
+  rdfs:label "Low energy consumption" .
+
+gsh:2db1f69d-5cc3-4e51-9978-367800ad5f9a a sgo:Influence;
+  sgo:basedOnMetric gsh:istarMetric;
+  sgo:contributesTo gsh:7d31a48f-1714-456e-a359-8a661fb7da2a;
+  sgo:hasSubject gsh:4bb58b7f-b51d-4ad5-ac73-f4bce8d15905;
+  sgo:hasValue gsh:istarMetric_makeValue .
+
+gsh:24fd3abe-23eb-47c7-8758-d06a73715581 a sgo:Goal;
+  sgo:andRefinement gsh:38541348-3029-49f6-b839-87369100ba8f;
+  rdfs:label "Temperature managed" .
+
+gsh:b9c580be-4c9b-41a3-97a1-a10d43dee88a a sgo:Influence;
+  sgo:basedOnMetric gsh:istarMetric;
+  sgo:contributesTo gsh:7d31a48f-1714-456e-a359-8a661fb7da2a;
+  sgo:hasSubject gsh:dea48b98-5fe2-4eeb-b412-3938c0b1a58a;
+  sgo:hasValue gsh:istarMetric_helpValue .
+
+gsh:260018c9-d8d2-47b3-babf-4aef67e79709 a sgo:Influence;
+  sgo:basedOnMetric gsh:istarMetric;
+  sgo:contributesTo gsh:7d31a48f-1714-456e-a359-8a661fb7da2a;
+  sgo:hasSubject gsh:473f076c-8649-4d90-98dc-aa8120b0d7b8;
+  sgo:hasValue gsh:istarMetric_breakValue .
+
+gsh:c07a86da-f763-4fd4-b345-f6cf193fb037 a sgo:Goal;
+  sgo:andRefinement gsh:46d85ec9-754e-4b98-9133-780c386ec621;
+  rdfs:label "Temperature control (self-)adapted" .
+
+gsh:46d85ec9-754e-4b98-9133-780c386ec621 a sgo:Goal;
+  rdfs:label "System (self-)adapted" .
+
+gsh:ceda4154-c958-4bf2-bdba-f0aa7df10ec9 a sgo:Quality;
+  rdfs:label "Low energy consumption" .
+
+gsh:38541348-3029-49f6-b839-87369100ba8f a sgo:Goal;
+  rdfs:label "Smart home managed" .
+
+gsh:083c07f5-bbe3-4fc2-b6d3-bdfb10ef982e a sgo:Quality;
+  rdfs:label "Comfort" .
