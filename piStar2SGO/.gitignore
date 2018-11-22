@@ -1,0 +1,9 @@
+.classpath
+.project
+.settings/
+.settings/*
+lib/*javadoc.jar
+lib/*sources.jar
+bin/
+data/input/other
+data/output/other
