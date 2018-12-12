@@ -1,0 +1,224 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.archimatetool.com/archimate') /]
+
+[comment 
+This mtl file is distributed as a stand-alone resource.
+To run a transformation the shortest path is to create an Acceleo project in Eclipse and link it to the
+com.archimatetool.model project checked out from the Archie sources (https://github.com/archimatetool/archi).
+This is done by adding the com.archimatetool.model project to the dependencies in the "Projects" tab in 
+"Options/Java Build Path".
+In order to let the EMF runtime find the Archimate metamodel from the generic
+http://www.archimatetool.com/archimate 
+URI that is specified in this transformation the following code has to be added to registerPackages
+method of the Generate class:
+
+          resourceSet.getPackageRegistry().put(ArchimatePackage.eNS_URI, ArchimatePackage.eINSTANCE);
+          resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("archimate", new ArchimateResourceFactory());
+
+Once this is set up the project can be executed with "Run As/Launch Acceleo Application" and using the .archimate
+source model as input ("Model" entry in the Run Configurations dialog).
+ /]
+
+[template public generateElement(model : ArchimateModel)]
+[comment @main /]
+
+[file (model.name.concat('.ttl'), false)]
+@prefix gvi: <http://www.gauss.it/examples/virtualinfrastructure/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sgo: <http://purl.org/gauss-unibo/sgo/> .
+@prefix asgo: <http://www.gauss.it/extensions/sgo/adaptive/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gvi:archimateMetric a sgo:OrdinalMetric;
+  sgo:hasMaxValueItem gvi:archimateMetric_3plusValueItem;
+  sgo:hasMinValueItem gvi:archimateMetric_3minusValueItem .
+
+gvi:archimateMetric_3plusValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_3plusValue;
+  sgo:hasNext gvi:archimateMetric_2plusValueItem .
+
+gvi:archimateMetric_2plusValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_2plusValue;
+  sgo:hasNext gvi:archimateMetric_1plusValueItem .
+
+gvi:archimateMetric_1plusValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_1plusValue;
+  sgo:hasNext gvi:archimateMetric_zeroValueItem .
+
+gvi:archimateMetric_zeroValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_zeroValue;
+  sgo:hasNext gvi:archimateMetric_1minusValueItem .
+
+gvi:archimateMetric_1minusValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_1minusValue;
+  sgo:hasNext gvi:archimateMetric_2minusValueItem .
+
+gvi:archimateMetric_2minusValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_2minusValue .
+  sgo:hasNext gvi:archimateMetric_3minusValueItem .
+
+gvi:archimateMetric_3minusValueItem a sgo:ValueItem;
+  sgo:hasContentValue gvi:archimateMetric_3minusValue .
+
+gvi:archimateMetric_3plusValue a sgo:Value;
+  sgo:value "3"^^xsd:int .
+
+gvi:archimateMetric_2plusValue a sgo:Value;
+  sgo:value "2"^^xsd:int .
+
+gvi:archimateMetric_1plusValue a sgo:Value;
+  sgo:value "1"^^xsd:int .
+
+gvi:archimateMetric_zeroValue a sgo:Value;
+  sgo:value "0"^^xsd:int .
+
+gvi:archimateMetric_1minusValue a sgo:Value;
+  sgo:value "-1"^^xsd:int .
+
+gvi:archimateMetric_2minusValue a sgo:Value;
+  sgo:value "-2"^^xsd:int .
+  
+gvi:archimateMetric_3minusValue a sgo:Value;
+  sgo:value "-3"^^xsd:int .
+
+gvi:weightMetric a sgo:ScalarMetric ;
+  sgo:hasMaxValueItem gvi:weight_maxValue ;
+  sgo:hasMinValueItem gvi:weight_minValue ;
+  sgo:definedOnValueType xsd:decimal .
+
+gvi:weight_maxValue a sgo:Value;
+  sgo:value "+10.0"^^xsd:decimal .
+
+gvi:weight_minValue a sgo:Value;
+  sgo:value "+0.0"^^xsd:decimal .
+
+[comment create metric triples for all used Quality weight /]
+[for (weight: String | getQualityWeights(model)) separator ('\n') ]
+gvi:weight_[weight /]Value a sgo:Value;
+  sgo:value "+[weight /]"^^xsd:decimal .
+[/for]
+
+[comment output all Archimate Goals that are not linked with influences to policies (and are not specialization of other goals that are) as sgo:Goal /]
+[for (goal : Goal | getGoals(model)) separator ('\n') ? (not isQuality(goal)) ] 
+[getUri(goal) /] a sgo:Goal ;
+	rdfs:label "[goal.name /]" .
+[/for]
+
+[comment output all Archimate Goals that are linked with influences to policies or are specialization of other goals that are as sgo:Quality /]
+[for (goal : Goal | getGoals(model)) separator ('\n') ? (isQuality(goal)) ] 
+[getUri(goal) /] a sgo:Quality ;
+[let weight : String = getProperty(goal, 'weight')]
+[if (not weight.oclIsUndefined())]
+	sgo:hasWeigth gvi:weight_[weight /]Value
+[/if]
+[/let]
+	rdfs:label "[goal.name /]" .
+[/for]
+
+[comment output all Archimate Requirements that are linked with influences as sgo:Task /]
+[comment TODO check links to influences /]
+[for (requirement : Requirement | getRequirements(model)) separator ('\n') ? (isPolicy(requirement)) ]
+[getUri(requirement) /] a asgo:ReconfigurationPolicy ;
+	rdfs:label "[requirement.name /]" .
+[/for]
+
+[comment output all Archimate influences from policies to goals (sgo:Qualities) as sgo:Influence /]
+[for (influence : InfluenceRelationship | getInfluences(model)) separator ('\n')]
+gvi:[influence.id /] a sgo:Influence ;
+	sgo:basedOnMetric gvi:archimateMetric ;
+	sgo:hasSubject [getUri(influence.source) /] ;
+	sgo:contributesTo [getUri(influence.target) /] ;
+	sgo:hasValue [mapInfluenceValue(influence.strength) /] .
+[/for]
+
+[/file]
+[/template]
+
+[query public mapInfluenceValue(strength : String) : String = 
+	let index : Integer = Sequence{'---', '--', '-', '+', '++', '+++'}->indexOf(strength) in 
+		if index.oclIsInvalid() then 
+			'unmappable_strength_value' 
+		else 
+			'gvi:'+Sequence{
+				'archimateMetric_3minusValueItem', 'archimateMetric_2minusValueItem', 'archimateMetric_1minusValueItem', 
+				'archimateMetric_1plusValue', 'archimateMetric_2plusValue', 'archimateMetric_3plusValue'
+			}->at(index) 
+		endif
+/]
+
+[query public getGeneralizationsForGoal(goal : Goal) : Set(SpecializationRelationship) =
+	goal.getArchimateModel().folders->any(folder | folder.name = 'Relations').elements
+		->select(element | element.oclIsTypeOf(SpecializationRelationship) and element.oclAsType(SpecializationRelationship).source.id = goal.id)
+/]
+
+[query public getInfluencesForGoal(goal : Goal) : Set(InfluenceRelationship) =
+	goal.getArchimateModel().folders->any(folder | folder.name = 'Relations').elements
+		->select(element | element.oclIsTypeOf(InfluenceRelationship) and element.oclAsType(InfluenceRelationship).target.id = goal.id)
+/]
+
+[comment Archie does not support profiles so it is not possible to define proper stereotypes and apply 
+         them to characterize Archimate Requirements elements representing policies /]
+[comment this version of the query looks for a property 'policy' set to 'true' in the Requirement to indentify a Policy /]
+[comment the alternative commented version uses the convention of starting the name with '<<policy>>' /]
+[query public isPolicy(element : ArchimateConcept) : Boolean = 
+--	element.oclIsTypeOf(Requirement) and element.oclAsType(Requirement).name.substring(1,10) = '<<policy>>'
+	element.oclIsTypeOf(Requirement) and 
+	let policyProp : Property = element.oclAsType(Requirement).properties->any(property | property.key = 'policy') in
+		if policyProp.oclIsUndefined() then
+			false
+		else
+			policyProp.value = 'true'
+		endif
+/]
+
+[query public getProperty(element : ArchimateConcept, key : String) : String =
+	let property : Property = element.properties->any(property | property.key = key) in
+		if property.oclIsUndefined() then
+			property
+		else
+			property.value
+		endif
+/]
+
+[query public getUri(element : ArchimateConcept) : String =
+	let propValue : String = getProperty(element, 'id') in
+		if propValue.oclIsUndefined() then
+			'gvi:'+ element.id
+		else
+			'gvi:'+ propValue
+		endif
+/]
+
+[query public isQuality(goal : Goal) : Boolean = 
+	getInfluencesForGoal(goal)->select(influence | isPolicy(influence.source))->size() > 0 or
+	getGeneralizationsForGoal(goal)->select(generalization | generalization.source.id = goal.id and generalization.target.oclIsTypeOf(Goal) and isQuality(generalization.target.oclAsType(Goal)))->size() > 0
+/]
+
+[query public getGoals(model : ArchimateModel) : Set(Goal) = 
+	model.folders->collect(folder | folder.elements)->flatten()->select(element | element.oclIsTypeOf(Goal))->collect(oclAsType(Goal))->asSet()
+/]
+
+[query public getRequirements(model : ArchimateModel) : Set(Requirement) = 
+	model.folders->collect(folder | folder.elements)->flatten()->select(element | element.oclIsTypeOf(Requirement))->collect(oclAsType(Requirement))->asSet()
+/]
+
+[query public getInfluences(model : ArchimateModel) : Set(InfluenceRelationship) = 
+	model.folders->collect(folder | folder.elements)->flatten()->select(element | element.oclIsTypeOf(InfluenceRelationship))->collect(oclAsType(InfluenceRelationship))->asSet()
+	-- model.folders->any(folder | folder.name = 'Relations').elements->select(element | element.oclIsTypeOf(InfluenceRelationship))->asSet()
+/]
+
+[query public getQualityWeightAsSet(element : ArchimateConcept) : Set(String) = 
+	if element.oclIsTypeOf(Goal) and isQuality(element.oclAsType(Goal)) then
+		if not getProperty(element, 'weight').oclIsUndefined() then
+			Set{getProperty(element, 'weight')}
+		else
+			Set{}
+		endif
+	else
+		Set{}
+	endif
+/]
+
+[query public getQualityWeights(model : ArchimateModel) : Set(String) = 
+	model.folders->collect(folder | folder.elements)->flatten()->select(element | element.oclIsTypeOf(Goal) and isQuality(element.oclAsType(Goal)))->collect(item | getQualityWeightAsSet(item.oclAsType(Goal)))->flatten()->asSet()
+/]
